@@ -25,4 +25,14 @@ public class StockmarketController {
         return stockService.addNewStock(stockBody);
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteExistingStock(@PathVariable("id") Long id) {
+        stockService.deleteExistingStock(id);
+    }
+
+    @PutMapping
+    public Stock updateExistingStock(@RequestBody Stock stockBody) {
+        return stockService.updateExistingStock(stockBody);
+    }
+
 }
