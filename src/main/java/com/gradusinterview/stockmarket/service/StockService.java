@@ -3,7 +3,6 @@ package com.gradusinterview.stockmarket.service;
 import com.gradusinterview.stockmarket.dao.StockRepository;
 import com.gradusinterview.stockmarket.model.Stock;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -33,6 +32,6 @@ public class StockService {
     public List<Stock> searchStocks(Stock stockSearchBody) {
 
 //        return stockRepository.searchWithCriteria(stockSearchBody);
-        return null;
+        return stockRepository.searchStocksWithCriteria(stockSearchBody);
     }
 }

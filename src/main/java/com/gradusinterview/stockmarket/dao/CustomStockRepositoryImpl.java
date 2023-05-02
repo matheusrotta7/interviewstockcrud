@@ -6,6 +6,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomStockRepositoryImpl implements CustomStockRepository {
@@ -14,19 +15,20 @@ public class CustomStockRepositoryImpl implements CustomStockRepository {
     EntityManager em;
     @Override
     public List<Stock> searchStocksWithCriteria(Stock searchStockBody) {
-        String queryString = "SELECT * FROM stocks WHERE 1=1";
+        String queryString = "Select s from Stock s where 1=1"; //jpql
         if (searchStockBody.getName() != null) {
-            queryString += " AND name LIKE " + searchStockBody.getName();
+            queryString += " and s.name like '" + searchStockBody.getName() + "'";
         }
         if (searchStockBody.getSector() != null) {
-            queryString += " AND sector LIKE " + searchStockBody.getSector();
+            queryString += " and s.sector like '" + searchStockBody.getSector() + "'";
         }
         if (searchStockBody.getTicket() != null) {
-            queryString += " AND ticket LIKE " + searchStockBody.getTicket();
+            queryString += " and s.ticket like '" + searchStockBody.getTicket() + "'";
         }
 
-        Query nativeQuery = em.createNativeQuery(queryString);
-        List<Stock> resultList = nativeQuery.getResultList();
+        Query query = em.createQuery(queryString);
+        List<Stock> resultList = (List<Stock>) query.getResultList();
+
         return resultList;
     }
 }
