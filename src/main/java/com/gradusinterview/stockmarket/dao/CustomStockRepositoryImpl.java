@@ -4,15 +4,18 @@ import com.gradusinterview.stockmarket.model.Stock;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CustomStockRepositoryImpl implements CustomStockRepository {
 
     @PersistenceContext
-    EntityManager em;
+    private EntityManager em;
+
+    public CustomStockRepositoryImpl(EntityManager em) {
+        this.em = em;
+    }
+
     @Override
     public List<Stock> searchStocksWithCriteria(Stock searchStockBody) {
         String queryString = "Select s from Stock s where 1=1"; //jpql

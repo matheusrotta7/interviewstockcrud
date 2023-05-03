@@ -10,8 +10,12 @@ import java.util.List;
 @Component
 public class StockService {
 
+    private StockRepository stockRepository;
+
     @Autowired
-    StockRepository stockRepository;
+    public StockService(StockRepository stockRepository) {
+        this.stockRepository = stockRepository;
+    }
 
     public List<Stock> getAllStocks() {
         return stockRepository.findAll();
@@ -31,7 +35,6 @@ public class StockService {
 
     public List<Stock> searchStocks(Stock stockSearchBody) {
 
-//        return stockRepository.searchWithCriteria(stockSearchBody);
         return stockRepository.searchStocksWithCriteria(stockSearchBody);
     }
 }
