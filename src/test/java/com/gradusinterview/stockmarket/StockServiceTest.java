@@ -21,6 +21,6 @@ public class StockServiceTest {
         stockService = new StockService(stockRepositoryMock);
         stockService.getAllStocks();
 
-        Mockito.verify(stockRepositoryMock, Mockito.times(1)).findAll();
+        Mockito.verify(stockRepositoryMock, Mockito.times(1)).findAllOrderById();
     }
 }
