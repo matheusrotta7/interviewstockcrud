@@ -44,4 +44,10 @@ public class CustomStockRepositoryImpl implements CustomStockRepository {
 
         return resultList;
     }
+
+    @Override
+    public Stock updateStock(Stock stockBody) {
+//        String queryString = "update"
+        return null;
+    }
 }
