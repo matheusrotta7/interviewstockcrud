@@ -12,4 +12,6 @@ public interface CustomStockRepository {
 
     public List<Stock> findAllOrderById();
 
+    public Stock updateStock(Stock stockBody);
+
 }
