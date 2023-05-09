@@ -34,4 +34,14 @@ public class CustomStockRepositoryImpl implements CustomStockRepository {
 
         return resultList;
     }
+
+    @Override
+    public List<Stock> findAllOrderById() {
+        String queryString = "Select s from Stock s order by s.id";
+
+        Query query = em.createQuery(queryString);
+        List<Stock> resultList = (List<Stock>) query.getResultList();
+
+        return resultList;
+    }
 }

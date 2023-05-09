@@ -18,7 +18,7 @@ public class StockService {
     }
 
     public List<Stock> getAllStocks() {
-        return stockRepository.findAll();
+        return stockRepository.findAllOrderById();
     }
 
     public Stock addNewStock(Stock stockBody) {

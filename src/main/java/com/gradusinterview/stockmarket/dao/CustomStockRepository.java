@@ -10,4 +10,6 @@ public interface CustomStockRepository {
 
     public List<Stock> searchStocksWithCriteria(Stock searchStockBody);
 
+    public List<Stock> findAllOrderById();
+
 }
